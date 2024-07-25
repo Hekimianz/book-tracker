@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Book Tracker</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
     <link rel="stylesheet" href="style.css" />
     <script src="app.js" defer></script>
   </head>
@@ -12,10 +16,12 @@
       <img id="logo" src="logo.png" />
       <button id="newBookBtn">Add Book</button>
       <form id="searchBookForm">
-        <input type="text" id="searchBookTitleInp" placeholder="Title" />
-        <section id="booksFoundField"></section>
+        <input type="text" id="bookTitleInp" placeholder="Title" />
+        <input type="text" id="bookAuthInp" placeholder="Author" />
+        <input type="number" id="bookPageInp" placeholder="Pages" />
         <button id="addBookBtn">Add</button>
       </form>
     </header>
+    <section id="shelf"></section>
   </body>
 </html>

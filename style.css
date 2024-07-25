@@ -81,8 +81,8 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: rgba(65, 50, 35, 0.1) 0px 1px 3px 0px,
-    rgba(65, 50, 35, 0.06) 0px 1px 2px 0px;
+  box-shadow: rgba(122, 94, 65, 0.3) 0px 1px 2px 0px,
+    rgba(122, 94, 65, 0.15) 0px 1px 3px 1px;
 }
 
 #logo {
@@ -95,14 +95,23 @@ header {
 #searchBookForm {
   display: none;
   gap: 5px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-#searchBookTitleInp {
+#bookTitleInp,
+#bookAuthInp,
+#bookPageInp {
   background-color: #fefae0;
   border: 2px solid #d4a373;
   border-radius: 4px;
   padding-left: 4px;
-  color: #7a5e41;
+  color: rgb(122, 94, 65);
+}
+
+#bookPageInp {
+  width: 55px;
 }
 
 #newBookBtn,
@@ -120,4 +129,36 @@ header {
   background-color: #d4a373;
   border-color: #fefae0;
   color: #fefae0;
+}
+
+#shelf {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.book {
+  width: 100%;
+  height: 50px;
+  padding: 60px 0;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: rgb(122, 94, 65);
+}
+
+.bookBtns {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+h2 {
+  max-width: 100px;
+  text-align: center;
 }
