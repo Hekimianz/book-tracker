@@ -162,3 +162,14 @@ h2 {
   max-width: 100px;
   text-align: center;
 }
+
+.deleteBtn {
+  color: darkred;
+  cursor: pointer;
+  transition: 0.2s all;
+}
+
+.deleteBtn:hover {
+  transform: scale(1.1);
+  color: red;
+}

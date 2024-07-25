@@ -2,7 +2,10 @@ const searchBookForm = document.querySelector("#searchBookForm");
 const newBookBtn = document.querySelector("#newBookBtn");
 const confirmBookBtn = document.querySelector("#addBookBtn");
 const shelf = document.querySelector("#shelf");
-const books = [];
+const books = JSON.parse(localStorage.getItem("books")) || [];
+let deleteBtns = document.querySelectorAll(".deleteBtn");
+let readChecks = shelf.querySelectorAll("input");
+if (books) renderBooks(books);
 
 function Book(title, author, pages, status, id) {
   this.title = title;
@@ -53,9 +56,12 @@ function renderBooks(books) {
     const readCheck = document.createElement("input");
     readCheck.setAttribute("type", "checkbox");
     readCheck.setAttribute("name", "readStatus");
-    readCheck.checked = false;
+    readCheck.checked = book.status === 1;
+    readCheck.classList.add(`${book.id}`);
     const deleteBtn = document.createElement("span");
     deleteBtn.classList.add("material-symbols-outlined");
+    deleteBtn.classList.add("deleteBtn");
+    deleteBtn.classList.add(`${book.id}`);
     deleteBtn.innerText = "delete_forever";
     cont.appendChild(title);
     cont.appendChild(author);
@@ -64,6 +70,30 @@ function renderBooks(books) {
     bookBtns.appendChild(readCheck);
     bookBtns.appendChild(deleteBtn);
     shelf.appendChild(cont);
-    console.log(cont);
+    localStorage.setItem("books", JSON.stringify(books));
+    deleteBtns = document.querySelectorAll(".deleteBtn");
+    readChecks = shelf.querySelectorAll("input");
+    addDeleteHandlers();
+    addCheckHandlers();
+  });
+}
+
+function addDeleteHandlers() {
+  deleteBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      books.splice(btn.classList[2], 1);
+      localStorage.setItem("books", JSON.stringify(books));
+      renderBooks(books);
+    });
+  });
+}
+
+function addCheckHandlers() {
+  readChecks.forEach((check) => {
+    check.addEventListener("change", () => {
+      const id = check.classList[0];
+      check.checked ? (books[id].status = 1) : (books[id].status = 0);
+      localStorage.setItem("books", JSON.stringify(books));
+    });
   });
 }
